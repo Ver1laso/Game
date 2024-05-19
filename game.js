@@ -25,7 +25,7 @@ function getHumanChoice(){
     let answer;
  
     do {
-        answer = window.prompt("Choose an option: Rock, Paper, or Scissors :)").toLocaleLowerCase();
+        answer = window.prompt("Choose an option: Rock, Paper, or Scissors :)");
     } while (answer != "rock" && answer != "paper" && answer != "scissors") 
 
     return answer;
@@ -41,41 +41,39 @@ function game(){
 
         const humanChoice = getHumanChoice();
         const computerChoice = getComputerChoice();
-        
-        if(humanChoice === "rock" && computerChoice === "paper"){
-            computerScore++;
-            console.log("Point for Computer");
+
+
+        if(humanChoice === "rock" && computerChoice === "scissors" ||
+            humanChoice === "paper" && computerChoice === "rock" ||
+            humanChoice === "scissors" && computerChoice === "paper"){
+                humanScore++;
+                console.log(" ")
+                console.log("Human chose: " + humanChoice);
+                console.log("Computer chose: " + computerChoice);
+                console.log("Point for Human!");
+                console.log(" ");
+            }
+        else if(computerChoice === "rock" && humanChoice === "scissors" ||
+            computerChoice === "paper" && humanChoice === "rock" ||
+            computerChoice === "scissors" && humanChoice === "paper"){
+                computerScore++;
+                console.log(" ")
+                console.log("Human chose: " + humanChoice);
+                console.log("Computer chose: " + computerChoice);
+                console.log("Point for Computer!");
+                console.log(" ");
+            }
+        else {
+            console.log(" ")
+            console.log("Human chose: " + humanChoice);
+            console.log("Computer chose: " + computerChoice);
+            console.log("It's a tie! try again!");
+            console.log(" ");
         }
-        if(humanChoice === "rock" && computerChoice === "scissors"){
-            humanScore++;
-            console.log("Point for Human");
-        }
-        if(humanChoice === "rock" && computerChoice === "rock"){
-            console.log("Tie!");
-        }
-        if(humanChoice === "paper" && computerChoice === "rock"){
-            humanScore++;
-            console.log("Point for Human");
-        }
-        if(humanChoice === "paper" && computerChoice === "scissors"){
-            computerScore++;
-            console.log("Point for Computer");
-        }
-        if(humanChoice === "paper" && computerChoice === "paper"){
-            console.log("Tie!");
-        }
-        if(humanChoice === "scissors" && computerChoice === "paper"){
-            humanScore++;
-        }
-        if(humanChoice === "scissors" && computerChoice === "rock"){
-            computerScore++;
-        }
-        if(humanChoice === "scissors" && computerChoice === "scissors"){
-            console.log("Tie!");
-        }
-        
+        console.log("*****************");
         console.log("Computer Score " + computerScore);
         console.log("Player Score " + humanScore);
+        console.log("*****************");
 
     } while (computerScore < 3 && humanScore < 3);
 
